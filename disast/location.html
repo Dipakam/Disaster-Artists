@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>LOCATION DEDO</title>
+        <script>
+            //var x = document.getElementById("longitude");
+            //var y = document.getElementById("lattitude");
+            var para = document.getElementById("paragraph");
+            function getLocation() {
+                if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    para.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                document.getElementById("lattitude").value = position.coords.latitude;
+                document.getElementById("longitude").value = position.coords.longitude;
+            }
+            getLocation();
+</script>
+
+    </head>
+    <body>
+        <p id="paragraph"></p> 
+        <center>
+            <form method="post" action="location.php" >
+                Name:<input type="text" name="nameU"><br>
+                Age<input type="text" name="age"><br>
+                <input type="hidden" id="longitude" name="longitude">
+                <input type="hidden" id="lattitude" name="lattitude">
+                <input type="submit" name= "Enter your location">
+             </form>
+        </center>
+    </body>
+</html>
